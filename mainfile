@@ -1,0 +1,78 @@
+import tkinter as tk
+import random
+
+# Data lists
+schools = [
+    "Alabama", "Ohio State University", "Texas", "USC", "Michigan", 
+    "South Dakota State University", "Utah Tech", "High Point University", 
+    "Grand Valley State University", "Case Western Reserve University", 
+    "NYU", "Chico State", "Minnesota", "Oklahoma", "Auburn", "Ole Miss", 
+    "Western New Mexico", "BYU", "Central Missouri", "Hamburger University", 
+    "Oklahoma Baptist", "The Academy of Art", "Rhode Island School of Art and Design", 
+    "Chicago Pipefitters Local 597", "Kenyon College", "Oregon State", "Wisconsin", "Tennessee Tech", "American University",
+    "Rutgers", "Vermont", "UMKC", "Penn State-Behrend", "Pitt", "Penn State-Altoona", "UC Santa Cruz", 
+    "UCLA", "Western New England", "Utah", "Baylor", "Arizona", "Simon Fraser", "the University of Saskatchewan"
+]
+dollar_amounts = [
+    "$1 million", "$500,000", "$2.5 million", "$750,000", "$3 million", 
+    "six dollars", "low six figures", "high six figures", 
+    "a truly staggering amount of money", "$3 million", 
+    "somewhere between four and eight dollars", "idk, probably a lot of money,", 
+    "A copper mine in Arizona", "equity in at least two MLS teams", "$316.72", 
+    "a ten figure deal", "the salary of at least seven public school teachers",
+    "$100,000", "$619.24", "400,000 tickets at the Chuck E.Cheese prize counter",
+    "a holographic Charizard", "$5 million", "the GDP of Sudan", "$50,000",
+]
+rumor_strings = [
+    "has signed a groundbreaking NIL deal of", 
+    "is rumored to have secured a massive NIL contract of", 
+    "has allegedly inked a lucrative NIL agreement for", 
+    "is reportedly in talks to offer a groundbreaking deal of ", 
+    "is said to have landed a major NIL deal for",
+    "has dropped the bag to secure",
+    "is considering offering",
+    "is paying",
+]
+rumor_end = [
+    "Toledo's kicker", "the top longsnapper in the portal", 
+    "the greatest QB in North Dakota prep history", "their top recruiting target", 
+    "a guy they don't even really want", "a two-star small forward", 
+    "a MAJOR recruit", "an elite right tackle", "a five-star talent", 
+    "the best prospect in Bulgaria", "a starter from a Big Ten school", 
+    "a former four-star recruit", "the starting QB at Ball State", "the third best athlete in Mongolia", "a pretty decent linebacker",
+    "Georgia's best defensive back", "the entire starting five of the Orlando Magic", "UCLA's backup punter",
+]
+
+def generate_nil_rumor():
+    # Construct a coherent rumor sentence
+    school = random.choice(schools)
+    amount = random.choice(dollar_amounts)
+    rumor = random.choice(rumor_strings)
+    ending = random.choice(rumor_end)
+    rumor_sentence = f"{school} {rumor} {amount} for {ending}."
+    
+    return rumor_sentence
+
+def generate_and_display_rumor():
+    # Generate and display a NIL rumor
+    rumor_label.config(text=generate_nil_rumor())
+
+# Create Tkinter window
+root = tk.Tk()
+root.title("Extra Points NIL Rumor Generator 5000")
+root.geometry("900x275")  
+
+# Create welcome text
+welcome_label = tk.Label(root, text="Welcome to the Extra Points NIL Rumor Generator 5000")
+welcome_label.pack(pady=10)
+
+# Create label to display rumor
+rumor_label = tk.Label(root, text="")
+rumor_label.pack(pady=10)
+
+# Create button to generate rumor
+generate_button = tk.Button(root, text="Generate Rumor", command=generate_and_display_rumor)
+generate_button.pack(pady=5)
+
+# Run Tkinter event loop
+root.mainloop()
